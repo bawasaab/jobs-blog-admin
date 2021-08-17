@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build-local": "ng build --base-href=/jobs-blog-admin/ --aot --build-optimizer --common-chunk --extract-licenses --named-chunks --optimization --configuration=production --progress --verbose",
+    "build-remote": "ng build --aot --build-optimizer --common-chunk --extract-licenses --named-chunks --optimization --configuration=production --progress --verbose",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
