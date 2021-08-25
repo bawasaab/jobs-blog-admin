@@ -12,4 +12,6 @@ export class BackendSidebarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  signOut(): void {}
+
 }
