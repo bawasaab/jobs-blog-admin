@@ -12,4 +12,8 @@ export class UsersListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  confirmBlockUnblockUser( in_userId: any, flag: number ) {}
+
+  softDelete( in_userId: any ) {}
+
 }

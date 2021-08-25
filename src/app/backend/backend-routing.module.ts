@@ -24,7 +24,7 @@ const routes: Routes = [
         component: ArticlesListComponent
     },
     {
-        path: 'users/master/:articleId',
+        path: 'users/master/:userId',
         component: UsersMasterComponent
     },
     {
