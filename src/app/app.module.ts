@@ -1,5 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +15,8 @@ import { FrontendFooterComponent } from './shared/frontend-footer/frontend-foote
 import { FrontendHeaderComponent } from './shared/frontend-header/frontend-header.component';
 import { BackendNavbarComponent } from './shared/backend-navbar/backend-navbar.component';
 import { BackendSidebarComponent } from './shared/backend-sidebar/backend-sidebar.component';
+
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -28,8 +33,13 @@ import { BackendSidebarComponent } from './shared/backend-sidebar/backend-sideba
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    CommonModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule, // required animations module
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })

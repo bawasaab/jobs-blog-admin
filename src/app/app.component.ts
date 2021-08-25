@@ -1,10 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router, ActivatedRoute, NavigationStart, NavigationError } from "@angular/router";
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'jobs-blog-admin';
+export class AppComponent implements OnInit {
+    title = 'jobs-blog-admin';
+
+    constructor(
+        private router: Router,
+        private activatedRoute: ActivatedRoute
+    ) {
+        this.router.events.subscribe((event) => {
+
+            if (event instanceof NavigationStart) {
+                console.log('event.url', event.url);
+                let body = document.getElementsByTagName('body')[0];
+                if( event.url == '/login' ) {
+                    body.classList.add("login-page");   //add the class
+                } else {
+                    body.classList.remove("login-page");   //remove the class
+                }
+            }
+        });
+    }
+
+    ngOnInit(): void {
+    }
 }
