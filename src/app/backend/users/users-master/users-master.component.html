@@ -39,8 +39,7 @@
                             <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
                                 <div class="input-group mb-3">
                                     <label class="form-control">First Name*</label>
-                                    <input type="text" class="form-control" placeholder="First name*" formControlName="first_name"
-                                        [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }" />
+                                    <input type="text" class="form-control" placeholder="First name*" formControlName="first_name" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }" />
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <span class="fas fa-user"></span>
@@ -68,8 +67,7 @@
             
                                 <div class="input-group mb-3">
                                     <label class="form-control">Email*</label>
-                                    <input type="email" class="form-control" placeholder="Email*" formControlName="email"
-                                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                    <input type="email" class="form-control" placeholder="Email*" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <span class="fas fa-envelope"></span>
@@ -85,8 +83,7 @@
             
                                 <div class="input-group mb-3">
                                     <label class="form-control">Password</label>
-                                    <input type="password" class="form-control" placeholder="Password*" formControlName="password"
-                                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                    <input type="password" class="form-control" placeholder="Password*" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <span class="fas fa-lock"></span>
@@ -102,8 +99,7 @@
             
                                 <div class="input-group mb-3">
                                     <label class="form-control">Contact*</label>
-                                    <input type="text" class="form-control" placeholder="Contact*" formControlName="contact_number"
-                                        [ngClass]="{ 'is-invalid': submitted && f.contact_number.errors }" />
+                                    <input type="text" class="form-control" placeholder="Contact*" formControlName="contact_number" [ngClass]="{ 'is-invalid': submitted && f.contact_number.errors }" />
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <span class="fas fa-envelope"></span>
@@ -121,8 +117,7 @@
             
                                 <div class="input-group mb-3">
                                     <label class="form-control">Role*</label>
-                                    <select class="form-control" formControlName="role" placeholder="Select Role"
-                                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                    <select class="form-control" formControlName="role" placeholder="Select Role" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                                         <option value="">-SELECT-</option>
                                         <option value="ADMIN">ADMIN</option>
                                         <option value="BLOGGER">BLOGGER</option>
@@ -142,8 +137,7 @@
             
                                 <div class="input-group mb-3">
                                     <label class="form-control">Status*</label>
-                                    <select class="form-control" formControlName="status" placeholder="Select Status"
-                                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                    <select class="form-control" formControlName="status" placeholder="Select Status" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                                         <option value="">-SELECT-</option>
                                         <option value="ACTIVE">ACTIVE</option>
                                         <option value="PENDING">PENDING</option>

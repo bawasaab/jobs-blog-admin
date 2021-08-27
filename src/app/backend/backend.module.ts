@@ -10,6 +10,10 @@ import { UsersListComponent } from './users/users-list/users-list.component';
 
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ArticlesContentComponent } from './articles/articles-content/articles-content.component';
+import { ArticlesTagsComponent } from './articles/articles-tags/articles-tags.component';
+import { ArticlesSeoComponent } from './articles/articles-seo/articles-seo.component';
+import { ArticlesDetailsComponent } from './articles/articles-details/articles-details.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ArticlesMasterComponent,
     ArticlesListComponent,
     UsersMasterComponent,
-    UsersListComponent
+    UsersListComponent,
+    ArticlesContentComponent,
+    ArticlesTagsComponent,
+    ArticlesSeoComponent,
+    ArticlesDetailsComponent
   ],
   imports: [
     CommonModule,
