@@ -17,6 +17,7 @@ import { BackendNavbarComponent } from './shared/backend-navbar/backend-navbar.c
 import { BackendSidebarComponent } from './shared/backend-sidebar/backend-sidebar.component';
 
 import { NgxSpinnerModule } from "ngx-spinner";
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,11 @@ import { NgxSpinnerModule } from "ngx-spinner";
     CommonModule,
     NgxSpinnerModule,
     BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot({
+        timeOut: 3000,
+        positionClass: 'toast-bottom-right',
+        preventDuplicates: true
+    })
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

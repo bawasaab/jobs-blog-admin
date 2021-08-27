@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { FrontendRoutingModule } from './frontend-routing.module';
 import { LoginComponent } from './login/login.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -11,7 +14,10 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     CommonModule,
-    FrontendRoutingModule
+    FrontendRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
   ]
 })
 export class FrontendModule { }

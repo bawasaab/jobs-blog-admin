@@ -58,7 +58,7 @@ export class UsersMasterComponent implements OnInit {
 	setUserId() {
 		try {
 			this.activatedRoute.params.subscribe((params) => {
-				this.userId = params.id;
+				this.userId = params.userId;
 				this.isUserIdProvidedFlag = this.userId ? true : false;
 
 				if (this.isUserIdProvidedFlag) {
@@ -67,10 +67,7 @@ export class UsersMasterComponent implements OnInit {
 					this.userForm = this.formBuilder.group({
 						email: ['', [Validators.required, Validators.email]],
 						password: [],
-						contact_number: [
-							'',
-							[Validators.required, Validators.minLength(10)],
-						],
+						phone: ['',[Validators.required, Validators.minLength(10)]],
 						first_name: ['', [Validators.required]],
 						role: ['', [Validators.required]],
 						status: ['', [Validators.required]],
@@ -81,11 +78,8 @@ export class UsersMasterComponent implements OnInit {
 				} else {
 					this.userForm = this.formBuilder.group({
 						email: ['', [Validators.required, Validators.email]],
-						password: ['', [Validators.required, Validators.minLength(5)]],
-						contact_number: [
-							'',
-							[Validators.required, Validators.minLength(10)],
-						],
+						password: ['', [Validators.required, Validators.minLength(6)]],
+						phone: ['',[Validators.required, Validators.minLength(10)]],
 						first_name: ['', [Validators.required]],
 						role: ['', [Validators.required]],
 						status: ['', [Validators.required]],
@@ -93,6 +87,7 @@ export class UsersMasterComponent implements OnInit {
 						imageLink: [],
 					});
 				}
+                this.setFormData();
 			});
 		} catch (ex) {
 			console.log('ex', ex);
@@ -155,15 +150,15 @@ export class UsersMasterComponent implements OnInit {
 		try {
 
 			this.userForm.patchValue({
-				first_name: this.userData.first_name,
-				last_name: this.userData.last_name,
-				contact_number: this.userData.contact_number,
-				email: this.userData.email,
-				role: this.userData.role,
-				status: this.userData.status,
+				first_name: this.userData?.first_name,
+				last_name: this.userData?.last_name,
+				phone: this.userData?.phone,
+				email: this.userData?.email,
+				role: this.userData?.role,
+				status: this.userData?.status,
 			});
-			let profilePic = this.userData.profilePic;
-			this.imageName = this.userData.profilePic;
+			let profilePic = this.userData?.profilePic;
+			this.imageName = this.userData?.profilePic;
 			console.log('profilePic', profilePic);
 
 			this.imageUrl = this.userImageLink + profilePic;
@@ -189,6 +184,7 @@ export class UsersMasterComponent implements OnInit {
 
 			let in_data = this.userForm.value;
 			in_data.email = in_data.email.toLowerCase();
+            console.log('in_data', in_data);
 
 			if (this.isUserIdProvidedFlag) {
 				this.updateUser(in_data);
@@ -214,11 +210,11 @@ export class UsersMasterComponent implements OnInit {
 				(result) => {
 					console.log('result', result);
 
-					// this.spinner.hide();
+					this.ngxSpinnerService.hide();
 
 					if (result.success) {
 						// this.toastr.success(result.message, 'Success!');
-						this.router.navigate(['/admin/users/list']);
+						this.router.navigate(['/users']);
 					} else {
 						// this.toastr.error(result.errorArr[0], 'Request Error!');
 						this.constantService.handleResCode(result);
@@ -227,8 +223,6 @@ export class UsersMasterComponent implements OnInit {
 				(error) => {
 					
 					this.ngxSpinnerService.hide();
-					console.log('error');
-					console.log(error);
 					let obj = {
 						resCode: 400,
 						msg: error.message.toString(),
@@ -273,7 +267,7 @@ export class UsersMasterComponent implements OnInit {
 
 					if (result.success) {
 						// this.toastr.success(result.message, 'Success!');
-						this.router.navigate(['/admin/users/list']);
+						this.router.navigate(['/users']);
 					} else {
 						// this.toastr.error(result.errorArr[0], 'Request Error!');
 						this.constantService.handleResCode(result);

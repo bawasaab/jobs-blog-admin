@@ -99,17 +99,17 @@
             
                                 <div class="input-group mb-3">
                                     <label class="form-control">Contact*</label>
-                                    <input type="text" class="form-control" placeholder="Contact*" formControlName="contact_number" [ngClass]="{ 'is-invalid': submitted && f.contact_number.errors }" />
+                                    <input type="text" class="form-control" placeholder="Contact*" formControlName="phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <span class="fas fa-envelope"></span>
                                         </div>
                                     </div>
-                                    <div *ngIf="submitted && f.contact_number.errors" class="invalid-feedback">
-                                        <div *ngIf="f.contact_number.errors.required">
+                                    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                        <div *ngIf="f.phone.errors.required">
                                             Contact is required
                                         </div>
-                                        <div *ngIf="f.contact_number.errors.minlength">
+                                        <div *ngIf="f.phone.errors.minlength">
                                             Contact should be upto 10 characters.
                                         </div>
                                     </div>
