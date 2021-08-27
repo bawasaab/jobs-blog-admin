@@ -32,11 +32,10 @@
 
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control" placeholder="Search">
+                                    <input type="text" #search name="table_search" class="form-control" placeholder="Search">
 
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default"><i
-                                                class="fas fa-search"></i></button>
+                                        <button type="button" (click)="searchUser(search.value)" class="btn btn-default"><i class="fas fa-search"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -47,348 +46,59 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <th>ArticleTitle</th>
                                         <th>ArticleSlug</th>
                                         <th>Date</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody *ngIf="articles?.length; else no_data_templ">
 
-                                    <tr>
-                                        <td>183</td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
+                                    <tr *ngFor="let article of articles; let i = index">
+                                        <td>{{ article._id }}</td>
+                                        <td>{{article.title}}</td>
+                                        <td>{{article.slug}}</td>
+                                        <td>{{article.createdAt}}</td>
+                                        <td><span class="tag tag-success">{{article.status}}</span></td>
                                         <td colspan="2">
-                                            <a href="javascript:void(0);" routerLink="/articles/master/userId" title="Edit User">
+                                            <a href="javascript:void(0);" routerLink="/articles/master/{{ article._id }}" title="Edit Article">
                                                 <span class="badge bg-yellow">
                                                   <i class="fa fa-fw fa-pen"></i>
                                                 </span>
                                             </a>
 
-                                            &nbsp;<a href="javascript:void(0);" title="Delete User">
-                                                <span class="badge bg-red" (click)="softDelete( 'userId' );">
+                                            &nbsp;<a href="javascript:void(0);" title="Delete Article">
+                                                <span class="badge bg-red" (click)="softDelete( article._id );">
                                                   <i class="fa fa-fw fa-trash"></i>
                                                 </span>
                                             </a>
 
-                                            &nbsp;<a href="javascript:void(0);" title="Block User" >
-                                                <span class="badge bg-green" (click)="confirmBlockUnblockUser( 'userId', 1 );">
+                                            <!-- &nbsp;<a href="javascript:void(0);" title="Block Article" >
+                                                <span class="badge bg-green" (click)="confirmBlockUnblockArticle( article._id, 1 );">
                                                   <i class="fa fa-fw fa-ban" aria-hidden="true"></i>
                                                 </span>
                                             </a>
 
                                             <ng-template #unblock_user>
-                                                &nbsp;<a href="javascript:void(0);" title="Unblock User">
-                                                  <span class="badge bg-red" (click)="confirmBlockUnblockUser( 'userId', 0 );">
+                                                &nbsp;<a href="javascript:void(0);" title="Unblock Article">
+                                                  <span class="badge bg-red" (click)="confirmBlockUnblockArticle( article._id, 0 );">
                                                     <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
                                                   </span>
                                                 </a>
-                                            </ng-template>
+                                            </ng-template> -->
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>183</td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
-                                        <td colspan="2">
-                                            <a href="javascript:void(0);" routerLink="/articles/master/userId" title="Edit User">
-                                                <span class="badge bg-yellow">
-                                                  <i class="fa fa-fw fa-pen"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Delete User">
-                                                <span class="badge bg-red" (click)="softDelete( 'userId' );">
-                                                  <i class="fa fa-fw fa-trash"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Block User" >
-                                                <span class="badge bg-green" (click)="confirmBlockUnblockUser( 'userId', 1 );">
-                                                  <i class="fa fa-fw fa-ban" aria-hidden="true"></i>
-                                                </span>
-                                            </a>
-
-                                            <ng-template #unblock_user>
-                                                &nbsp;<a href="javascript:void(0);" title="Unblock User">
-                                                  <span class="badge bg-red" (click)="confirmBlockUnblockUser( 'userId', 0 );">
-                                                    <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                                                  </span>
-                                                </a>
-                                            </ng-template>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>183</td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
-                                        <td colspan="2">
-                                            <a href="javascript:void(0);" routerLink="/articles/master/userId" title="Edit User">
-                                                <span class="badge bg-yellow">
-                                                  <i class="fa fa-fw fa-pen"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Delete User">
-                                                <span class="badge bg-red" (click)="softDelete( 'userId' );">
-                                                  <i class="fa fa-fw fa-trash"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Block User" >
-                                                <span class="badge bg-green" (click)="confirmBlockUnblockUser( 'userId', 1 );">
-                                                  <i class="fa fa-fw fa-ban" aria-hidden="true"></i>
-                                                </span>
-                                            </a>
-
-                                            <ng-template #unblock_user>
-                                                &nbsp;<a href="javascript:void(0);" title="Unblock User">
-                                                  <span class="badge bg-red" (click)="confirmBlockUnblockUser( 'userId', 0 );">
-                                                    <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                                                  </span>
-                                                </a>
-                                            </ng-template>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>183</td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
-                                        <td colspan="2">
-                                            <a href="javascript:void(0);" routerLink="/articles/master/userId" title="Edit User">
-                                                <span class="badge bg-yellow">
-                                                  <i class="fa fa-fw fa-pen"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Delete User">
-                                                <span class="badge bg-red" (click)="softDelete( 'userId' );">
-                                                  <i class="fa fa-fw fa-trash"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Block User" >
-                                                <span class="badge bg-green" (click)="confirmBlockUnblockUser( 'userId', 1 );">
-                                                  <i class="fa fa-fw fa-ban" aria-hidden="true"></i>
-                                                </span>
-                                            </a>
-
-                                            <ng-template #unblock_user>
-                                                &nbsp;<a href="javascript:void(0);" title="Unblock User">
-                                                  <span class="badge bg-red" (click)="confirmBlockUnblockUser( 'userId', 0 );">
-                                                    <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                                                  </span>
-                                                </a>
-                                            </ng-template>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>183</td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
-                                        <td colspan="2">
-                                            <a href="javascript:void(0);" routerLink="/articles/master/userId" title="Edit User">
-                                                <span class="badge bg-yellow">
-                                                  <i class="fa fa-fw fa-pen"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Delete User">
-                                                <span class="badge bg-red" (click)="softDelete( 'userId' );">
-                                                  <i class="fa fa-fw fa-trash"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Block User" >
-                                                <span class="badge bg-green" (click)="confirmBlockUnblockUser( 'userId', 1 );">
-                                                  <i class="fa fa-fw fa-ban" aria-hidden="true"></i>
-                                                </span>
-                                            </a>
-
-                                            <ng-template #unblock_user>
-                                                &nbsp;<a href="javascript:void(0);" title="Unblock User">
-                                                  <span class="badge bg-red" (click)="confirmBlockUnblockUser( 'userId', 0 );">
-                                                    <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                                                  </span>
-                                                </a>
-                                            </ng-template>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>183</td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
-                                        <td colspan="2">
-                                            <a href="javascript:void(0);" routerLink="/articles/master/userId" title="Edit User">
-                                                <span class="badge bg-yellow">
-                                                  <i class="fa fa-fw fa-pen"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Delete User">
-                                                <span class="badge bg-red" (click)="softDelete( 'userId' );">
-                                                  <i class="fa fa-fw fa-trash"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Block User" >
-                                                <span class="badge bg-green" (click)="confirmBlockUnblockUser( 'userId', 1 );">
-                                                  <i class="fa fa-fw fa-ban" aria-hidden="true"></i>
-                                                </span>
-                                            </a>
-
-                                            <ng-template #unblock_user>
-                                                &nbsp;<a href="javascript:void(0);" title="Unblock User">
-                                                  <span class="badge bg-red" (click)="confirmBlockUnblockUser( 'userId', 0 );">
-                                                    <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                                                  </span>
-                                                </a>
-                                            </ng-template>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>183</td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
-                                        <td colspan="2">
-                                            <a href="javascript:void(0);" routerLink="/articles/master/userId" title="Edit User">
-                                                <span class="badge bg-yellow">
-                                                  <i class="fa fa-fw fa-pen"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Delete User">
-                                                <span class="badge bg-red" (click)="softDelete( 'userId' );">
-                                                  <i class="fa fa-fw fa-trash"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Block User" >
-                                                <span class="badge bg-green" (click)="confirmBlockUnblockUser( 'userId', 1 );">
-                                                  <i class="fa fa-fw fa-ban" aria-hidden="true"></i>
-                                                </span>
-                                            </a>
-
-                                            <ng-template #unblock_user>
-                                                &nbsp;<a href="javascript:void(0);" title="Unblock User">
-                                                  <span class="badge bg-red" (click)="confirmBlockUnblockUser( 'userId', 0 );">
-                                                    <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                                                  </span>
-                                                </a>
-                                            </ng-template>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>183</td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
-                                        <td colspan="2">
-                                            <a href="javascript:void(0);" routerLink="/articles/master/userId" title="Edit User">
-                                                <span class="badge bg-yellow">
-                                                  <i class="fa fa-fw fa-pen"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Delete User">
-                                                <span class="badge bg-red" (click)="softDelete( 'userId' );">
-                                                  <i class="fa fa-fw fa-trash"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Block User" >
-                                                <span class="badge bg-green" (click)="confirmBlockUnblockUser( 'userId', 1 );">
-                                                  <i class="fa fa-fw fa-ban" aria-hidden="true"></i>
-                                                </span>
-                                            </a>
-
-                                            <ng-template #unblock_user>
-                                                &nbsp;<a href="javascript:void(0);" title="Unblock User">
-                                                  <span class="badge bg-red" (click)="confirmBlockUnblockUser( 'userId', 0 );">
-                                                    <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                                                  </span>
-                                                </a>
-                                            </ng-template>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>183</td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
-                                        <td colspan="2">
-                                            <a href="javascript:void(0);" routerLink="/articles/master/userId" title="Edit User">
-                                                <span class="badge bg-yellow">
-                                                  <i class="fa fa-fw fa-pen"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Delete User">
-                                                <span class="badge bg-red" (click)="softDelete( 'userId' );">
-                                                  <i class="fa fa-fw fa-trash"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Block User" >
-                                                <span class="badge bg-green" (click)="confirmBlockUnblockUser( 'userId', 1 );">
-                                                  <i class="fa fa-fw fa-ban" aria-hidden="true"></i>
-                                                </span>
-                                            </a>
-
-                                            <ng-template #unblock_user>
-                                                &nbsp;<a href="javascript:void(0);" title="Unblock User">
-                                                  <span class="badge bg-red" (click)="confirmBlockUnblockUser( 'userId', 0 );">
-                                                    <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                                                  </span>
-                                                </a>
-                                            </ng-template>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>183</td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
-                                        <td colspan="2">
-                                            <a href="javascript:void(0);" routerLink="/articles/master/userId" title="Edit User">
-                                                <span class="badge bg-yellow">
-                                                  <i class="fa fa-fw fa-pen"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Delete User">
-                                                <span class="badge bg-red" (click)="softDelete( 'userId' );">
-                                                  <i class="fa fa-fw fa-trash"></i>
-                                                </span>
-                                            </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Block User" >
-                                                <span class="badge bg-green" (click)="confirmBlockUnblockUser( 'userId', 1 );">
-                                                  <i class="fa fa-fw fa-ban" aria-hidden="true"></i>
-                                                </span>
-                                            </a>
-
-                                            <ng-template #unblock_user>
-                                                &nbsp;<a href="javascript:void(0);" title="Unblock User">
-                                                  <span class="badge bg-red" (click)="confirmBlockUnblockUser( 'userId', 0 );">
-                                                    <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                                                  </span>
-                                                </a>
-                                            </ng-template>
-                                        </td>
-                                    </tr>
+                                    </tr>                                 
                                     
-                                    
-
                                 </tbody>
+
+                                <ng-template #no_data_templ>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center" colspan="5">No record found!</td>
+                                        </tr>
+                                    </tbody>
+                                </ng-template>
                             </table>
                         </div>
                         <!-- /.card-body -->
