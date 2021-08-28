@@ -70,4 +70,15 @@ export class ArticleService {
                 catchError((e: Response) => throwError(e))
             );
     }
+
+    isArticleSlugExists(slug: any) {
+
+        let url = `${this.apiEndPoint}/slug/${slug}/exists`;
+        return this.httpClient
+            .get(url, this.constantService.getHttpJsonOptions())
+            .pipe(
+                map((e: any) => e),
+                catchError((e: Response) => throwError(e))
+            );
+    }
 }

@@ -17,6 +17,8 @@ export class ArticlesDetailsComponent implements OnInit {
 
     articleDetailsForm!: FormGroup;
     submitted = false;
+    slug: any;
+    showSubmitBtn = true;
 
     constructor(
 		private router: Router,
@@ -39,6 +41,62 @@ export class ArticlesDetailsComponent implements OnInit {
 
     // convenience getter for easy access to form fields
 	get f() { return this.articleDetailsForm.controls; }
+
+    generateSlug($e: any) {
+
+        this.slug = $e.target.value.trim();
+        if( this.slug != '' ) {
+
+            this.slug = this.slug.split(" ").join("-");
+            this.articleDetailsForm.patchValue({
+                slug: this.slug
+            });
+        }
+    }
+
+    isSlugExists($e: any) {
+
+        this.slug = $e.target.value.trim();
+        this.articleService.isArticleSlugExists( this.slug ).subscribe(
+            (result) => {
+                console.log('result', result);
+
+                this.ngxSpinnerService.hide();
+
+                if (result.success) {
+                    // this.toastr.success(result.message, 'Success!');
+                    // this.router.navigate(['/articles']);
+                    if( result.data.exists ) {
+                        let obj = {
+                            resCode: 400,
+                            msg: 'Slug already exists use another',
+                        };
+                        this.constantService.handleResCode(obj);
+                        this.showSubmitBtn = false;
+                    } else {
+                        this.showSubmitBtn = true;
+                    }
+                } else {
+                    // this.toastr.error(result.errorArr[0], 'Request Error!');
+                    this.constantService.handleResCode(result);
+                }
+            },
+            (error) => {
+                
+                this.ngxSpinnerService.hide();
+                let obj = {
+                    resCode: 400,
+                    msg: error.message.toString(),
+                };
+                this.constantService.handleResCode(obj);
+                // this.toastr.error(error.msg, 'Request Error!');
+            },
+            () => {
+                // inside complete
+                this.ngxSpinnerService.hide();
+            }
+        );
+    }
 
     onSubmit() {
 		this.submitted = true;

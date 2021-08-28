@@ -2,7 +2,7 @@
     <div class="form-group row">
         <label for="inputTitle3" class="col-sm-2 col-form-label">Title</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputEmail3" placeholder="Title" formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+            <input type="text" (keyup)="generateSlug($event);" class="form-control" id="inputEmail3" placeholder="Title" formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
             <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
                 <div *ngIf="f.title.errors.required" class="margin-left-10">
                     title is required
@@ -14,7 +14,7 @@
     <div class="form-group row">
         <label for="inputSlug3" class="col-sm-2 col-form-label">Slug</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputSlug3" placeholder="Slug" formControlName="slug" [ngClass]="{ 'is-invalid': submitted && f.slug.errors }">
+            <input type="text" (blur)="isSlugExists($event);" class="form-control" id="inputSlug3" placeholder="Slug" formControlName="slug" [ngClass]="{ 'is-invalid': submitted && f.slug.errors }">
             <div *ngIf="submitted && f.slug.errors" class="invalid-feedback">
                 <div *ngIf="f.slug.errors.required">
                     slug is required
@@ -73,7 +73,7 @@
 
     <div class="form-group row">
         <div class="offset-sm-2 col-sm-10">
-            <button type="submit" class="btn btn-info">Submit</button>
+            <button [disabled]="!showSubmitBtn" type="submit" class="btn btn-info">Submit</button>
             &nbsp;
             <a href="javascript:void(0);" routerLink="/articles" class="btn btn-default float-right">Article Listing</a>
         </div>
