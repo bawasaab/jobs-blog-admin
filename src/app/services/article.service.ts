@@ -36,6 +36,20 @@ export class ArticleService {
             );
     }
 
+    updateArticle(in_data: any): Observable<any> {
+
+        return this.httpClient
+            .patch(
+                `${this.apiEndPoint}`,
+                in_data,
+                this.constantService.getHttpJsonOptions()
+            )
+            .pipe(
+                map((e: any) => e),
+                catchError((e: Response) => throwError(e))
+            );
+    }
+
     getAllArticles(search: any) {
 
         let url = `${this.apiEndPoint}`;
@@ -65,6 +79,33 @@ export class ArticleService {
         let url = `${this.apiEndPoint}/setStatus/${articleId}`;
         return this.httpClient
             .patch(url, in_data, this.constantService.getHttpJsonOptions())
+            .pipe(
+                map((e: any) => e),
+                catchError((e: Response) => throwError(e))
+            );
+    }
+
+    isArticleSlugExists(slug: any, articleId: any) {
+
+        let url;
+        if( articleId ) {
+            url = `${this.apiEndPoint}/slug/${slug}/exists/${articleId}`;
+        } else {
+            url = `${this.apiEndPoint}/slug/${slug}/exists`;
+        }
+        return this.httpClient
+            .get(url, this.constantService.getHttpJsonOptions())
+            .pipe(
+                map((e: any) => e),
+                catchError((e: Response) => throwError(e))
+            );
+    }
+
+    getArticleById(articleId: any): Observable<any> {
+
+        let url = `${this.apiEndPoint}/${articleId}`;
+        return this.httpClient
+            .get(url, this.constantService.getHttpJsonOptions())
             .pipe(
                 map((e: any) => e),
                 catchError((e: Response) => throwError(e))
