@@ -1,0 +1,120 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Departments Listing</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Departments Listing</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <a href="javascript:void(0);" routerLink="/departments/master" class="btn btn-sm btn-success">Add New</a>
+                            </h3>
+
+                            <div class="card-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" #search name="table_search" class="form-control" placeholder="Search">
+
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-default"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Email</th>
+                                        <th>Name</th>
+                                        <th>phone</th>                                        
+                                        <th>Role</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                    <tr>
+                                        <td>183</td>
+                                        <td>doe@yopmail.com</td>
+                                        <td>John Doe</td>
+                                        <td>Blogger</td>
+                                        <td><span class="tag tag-success">Approved</span></td>
+                                        <td colspan="2">
+                                            <a href="javascript:void(0);" routerLink="/departments/master/userId" title="Edit User">
+                                                <span class="badge bg-yellow">
+                                                  <i class="fa fa-fw fa-pen"></i>
+                                                </span>
+                                            </a>
+
+                                            &nbsp;<a href="javascript:void(0);" title="Delete User">
+                                                <span class="badge bg-red" >
+                                                  <i class="fa fa-fw fa-trash"></i>
+                                                </span>
+                                            </a>
+
+                                            &nbsp;<a href="javascript:void(0);" title="Block User" >
+                                                <span class="badge bg-green" >
+                                                  <i class="fa fa-fw fa-ban" aria-hidden="true"></i>
+                                                </span>
+                                            </a>
+
+                                            <ng-template #unblock_user>
+                                                &nbsp;<a href="javascript:void(0);" title="Unblock User">
+                                                  <span class="badge bg-red" >
+                                                    <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+                                                  </span>
+                                                </a>
+                                            </ng-template>
+
+                                            &nbsp;<a href="javascript:void(0);" routerLink="/departments/1/categories" title="Edit User">
+                                                <span class="badge bg-yellow">
+                                                  <i class="fa fa-fw fa-pen"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer clearfix">
+                            <ul class="pagination pagination-sm m-0 float-right">
+                                <li class="page-item"><a class="page-link" href="#">«</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">»</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

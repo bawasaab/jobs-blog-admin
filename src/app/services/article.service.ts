@@ -36,11 +36,11 @@ export class ArticleService {
             );
     }
 
-    updateArticle(in_data: any): Observable<any> {
+    updateArticle(in_data: any, articleId: any): Observable<any> {
 
         return this.httpClient
             .patch(
-                `${this.apiEndPoint}`,
+                `${this.apiEndPoint}/${articleId}`,
                 in_data,
                 this.constantService.getHttpJsonOptions()
             )

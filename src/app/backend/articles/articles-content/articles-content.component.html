@@ -1,10 +1,10 @@
-<form class="form-horizontal">                                       
+<form class="form-horizontal" [formGroup]="articleContentForm" (ngSubmit)="onSubmit()">
 
     <div class="form-group row">
         <div class="col-sm-12">
 
             <!-- <editor formControlName="description" [init]="config"></editor> -->
-            <editor [init]="config"></editor>
+            <editor formControlName="description" [init]="config"></editor>
         </div>
     </div>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ArticleService } from "../../../services/article.service";
@@ -8,6 +8,8 @@ import { ConstantService } from '../../../services/constant.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { Article } from "../../../interfaces/article";
+
 @Component({
     selector: 'app-articles-details',
     templateUrl: './articles-details.component.html',
@@ -15,13 +17,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ArticlesDetailsComponent implements OnInit {
 
+    articleId: any;
+    isArticleIdProvidedFlag!: boolean;
+    articleData!: Article;
+
     articleDetailsForm!: FormGroup;
     submitted = false;
     slug: any;
     showSubmitBtn = true;
-    articleId: any;
-    isArticleIdProvidedFlag!: boolean;
-    articleData: any;
+    // isArticleIdProvidedFlag!: boolean;
+    // articleData: any;
 
     constructor(
 		private router: Router,
@@ -242,7 +247,7 @@ export class ArticlesDetailsComponent implements OnInit {
     updateArticle(in_data: any) {
 
         this.ngxSpinnerService.show();
-        this.articleService.updateArticle(in_data).subscribe(
+        this.articleService.updateArticle(in_data, this.articleId).subscribe(
             (result) => {
                 console.log('result', result);
 

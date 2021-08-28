@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +38,7 @@ import {ToastrModule} from 'ngx-toastr';
     HttpClientModule,
     AppRoutingModule,
     CommonModule,
+    RouterModule,
     NgxSpinnerModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({
