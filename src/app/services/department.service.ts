@@ -96,7 +96,7 @@ export class DepartmentService {
             );
 	}
 
-	blockUnblockDepartment(deptId: any, in_data: { title: any; status: any; }): Observable<any> {
+	blockUnblockDepartment(deptId: any, in_data: any): Observable<any> {
         return this.httpClient
             .patch(
                 `${this.apiEndPoint}/${deptId}`,

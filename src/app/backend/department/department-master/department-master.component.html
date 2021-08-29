@@ -1,1 +1,128 @@
-<p>department-master works!</p>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Department Master</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Department Master</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Department Master</h3>
+                            </div>
+                            <!-- <div class="float-right">
+                                <a href="javascript:void(0);" [routerLink]="['/admin/Department/master']" class="btn btn-success btn-sm">Add New</a>
+                            </div> -->
+                        </div>
+                        <div class="card-body">
+            
+                            <!-- /.card-header -->
+                            <form [formGroup]="deptForm" (ngSubmit)="onSubmit()">
+                                <div class="input-group mb-3">
+                                    <label class="form-control">Title*</label>
+                                    <input type="text" class="form-control" placeholder="Department Title*" formControlName="department_title" [ngClass]="{ 'is-invalid': submitted && f.department_title.errors }" />
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="fas fa-user"></span>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="submitted && f.department_title.errors" class="invalid-feedback">
+                                        <div *ngIf="f.department_title.errors.required">
+                                            title is required
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label class="form-control">Slug*</label>
+                                    <input type="text" class="form-control" placeholder="Department Slug*" formControlName="department_slug" [ngClass]="{ 'is-invalid': submitted && f.department_slug.errors }" />
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="fas fa-user"></span>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="submitted && f.department_slug.errors" class="invalid-feedback">
+                                        <div *ngIf="f.department_slug.errors.required">
+                                            slug is required
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="input-group mb-3">
+                                    <label class="form-control">Status*</label>
+                                    <select class="form-control" formControlName="department_status" placeholder="Select Status" [ngClass]="{ 'is-invalid': submitted && f.department_status.errors }">
+                                        <option value="">-SELECT-</option>
+                                        <option value="OPEN">OPEN</option>
+                                        <option value="CLOSE">CLOSE</option>
+                                    </select>
+            
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="fas fa-user"></span>
+                                        </div>
+                                    </div>
+            
+                                    <div *ngIf="submitted && f.department_status.errors" class="invalid-feedback">
+                                        <div *ngIf="f.department_status.errors.required">Status is required</div>
+                                    </div>
+                                </div>
+            
+                                <div class="input-group mb-3">
+                                    <label class="form-control">Change Profile Image</label>
+                                    <input type="file" class="form-control" placeholder="Profile Pic" (change)="onChange($event)"
+                                        formControlName="imageLink" />
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="fas fa-lock"></span>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="row">
+                                    <!-- /.col -->
+                                    <div class="col-4">&nbsp;</div>
+                                    <div class="col-4">
+                                        <button type="submit" class="btn btn-primary btn-block">
+                                            Submit
+                                        </button>
+                                    </div>
+                                    <div class="col-4">&nbsp;</div>
+                                    <!-- /.col -->
+                                </div>
+                            </form>
+                            <!-- /.card-body -->
+            
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">Footer</div>
+                        <!-- /.card-footer-->
+                    </div>
+                <!-- /.card -->
+
+                </div>
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
