@@ -105,7 +105,7 @@ export class CategoryService {
             );
 	}
 
-	blockUnblockCategory(deptId: any, in_data: { title: any; status: any; }): Observable<any> {
+	blockUnblockCategory(deptId: any, in_data: any): Observable<any> {
         return this.httpClient
             .patch(
                 `${this.apiEndPoint}/${deptId}`,

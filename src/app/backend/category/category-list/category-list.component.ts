@@ -219,8 +219,8 @@ export class CategoryListComponent implements OnInit {
 		try {
 
 			let in_data = {
-				title: title,
-				status: in_status
+				category_title: title,
+				category_status: in_status
 			};
 			this.ngxSpinnerService.show();
 

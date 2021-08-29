@@ -67,7 +67,7 @@ export class CategoryMasterComponent implements OnInit {
 
 			this.activatedRoute.params.subscribe(async (params) => {
 				this.deptId = params.departmentId;
-				this.catgId = params.id;
+				this.catgId = params.categoryId;
 
 				this.isDeptIdProvidedFlag = this.deptId ? true : false;
 				this.isCatgIdProvidedFlag = this.catgId ? true : false;
@@ -216,7 +216,7 @@ export class CategoryMasterComponent implements OnInit {
 			this.catgForm.patchValue({
 				category_title: this.catgData.category_title,
 				category_slug: this.catgData.category_slug,
-				status: this.catgData.status
+				category_status: this.catgData.category_status
 			});
 			// this.spinner.hide();
 		} catch (ex) {

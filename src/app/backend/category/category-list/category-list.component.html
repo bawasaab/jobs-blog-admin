@@ -58,13 +58,13 @@
                                         <td>{{ category?.category_title }}</td>
                                         <td>{{ category?.category_slug }}</td>
     
-                                        <td *ngIf="category?.status == 'OPEN'; else statusBadge">
+                                        <td *ngIf="category?.category_status == 'OPEN'; else statusBadge">
                                             <span class="badge badge-success">
-                                                {{ category?.status }}
+                                                {{ category?.category_status }}
                                             </span>
                                         </td>
                                         <ng-template #statusBadge>
-                                            <td><span class="badge badge-danger">{{ category?.status }}</span></td>
+                                            <td><span class="badge badge-danger">{{ category?.category_status }}</span></td>
                                         </ng-template>
                                         
                                         <td colspan="2">
@@ -75,16 +75,16 @@
                                                 </span>
                                             </a>
     
-                                            &nbsp;<a href="javascript:void(0);" title="Delete Department">
+                                            <!-- &nbsp;<a href="javascript:void(0);" title="Delete Department">
                                                 <span class="badge bg-red" (click)="softDelete(category?._id)">
                                                     <i class="fa fa-trash"></i>
                                                 </span>
-                                            </a>
+                                            </a> -->
     
                                             &nbsp;<a href="javascript:void(0);" title="Set Category Status To Close"
-                                                *ngIf="category?.status != 'CLOSE'; else unblock_user">
+                                                *ngIf="category?.category_status != 'CLOSE'; else unblock_user">
                                                 <span class="badge bg-red"
-                                                    (click)="confirmBlockUnblockCategory(category?._id, category?.title, 1)">
+                                                    (click)="confirmBlockUnblockCategory(category?._id, category?.category_title, 1)">
                                                     <i class="fa fa-toggle-off" aria-hidden="true"></i>
                                                 </span>
                                             </a>
@@ -92,7 +92,7 @@
                                             <ng-template #unblock_user>
                                                 &nbsp;<a href="javascript:void(0);" title="Set Category Status To Open">
                                                     <span class="badge bg-green"
-                                                        (click)="confirmBlockUnblockCategory(category?._id, category?.title, 0)">
+                                                        (click)="confirmBlockUnblockCategory(category?._id, category?.category_title, 0)">
                                                         <i class="fa fa-toggle-on" aria-hidden="true"></i>
                                                     </span>
                                                 </a>
