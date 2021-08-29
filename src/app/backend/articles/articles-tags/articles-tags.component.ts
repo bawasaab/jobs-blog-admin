@@ -24,6 +24,7 @@ export class ArticlesTagsComponent implements OnInit {
     articleTagsForm!: FormGroup;
     submitted = false;
     showSubmitBtn = true;
+    originalTags = [];
 
     constructor(
         private router: Router,
@@ -114,8 +115,16 @@ export class ArticlesTagsComponent implements OnInit {
 
 		try {
 
+            this.originalTags = this.articleData?.tags;
+            let tagsObj: { display: never; value: never; }[] = [];
+            this.articleData?.tags.forEach(element => {
+                tagsObj.push({
+                    display: element,
+                    value: element
+                });
+            });
 			this.articleTagsForm.patchValue({
-                tags: this.articleData?.tags.join(' ')
+                tags: tagsObj
 			});
 			// this.spinner.hide();
 		} catch (ex) {
@@ -130,9 +139,17 @@ export class ArticlesTagsComponent implements OnInit {
 
     onSubmit() {
 		this.submitted = true;
+        let tagsArr = [];
 
 		let in_data = this.articleTagsForm.value;
-        let tagsArr = in_data.tags.split(" ");
+        if( in_data ) {
+            tagsArr = in_data.tags.map( (obj: any) => obj.value );
+            // [...tagsArr, ...this.originalTags];
+            this.originalTags.concat(tagsArr);
+        } else {
+            tagsArr = this.originalTags.map( (obj: any) => obj.value );
+            [...tagsArr, ...this.originalTags];
+        }
         let tagsUniqueArr = [...new Set(tagsArr)];
         in_data.tags = tagsUniqueArr;
   
@@ -149,7 +166,6 @@ export class ArticlesTagsComponent implements OnInit {
         this.ngxSpinnerService.show();
         this.articleService.updateArticle(in_data, this.articleId).subscribe(
             (result) => {
-                console.log('result', result);
 
                 this.ngxSpinnerService.hide();
 

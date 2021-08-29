@@ -36,6 +36,7 @@ export interface Article {
 
     short_description: string,
     description: string,
+    scheduled_for: Date,
 
     meta: [meta],
 	comments: [comments],

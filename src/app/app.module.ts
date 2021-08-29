@@ -19,6 +19,7 @@ import { BackendSidebarComponent } from './shared/backend-sidebar/backend-sideba
 
 import { NgxSpinnerModule } from "ngx-spinner";
 import {ToastrModule} from 'ngx-toastr';
+import { TagInputModule } from 'ngx-chips';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,8 @@ import {ToastrModule} from 'ngx-toastr';
     BackendSidebarComponent,
   ],
   imports: [
+    TagInputModule,
+    BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
