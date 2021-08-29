@@ -14,6 +14,10 @@ import { ArticlesContentComponent } from './articles/articles-content/articles-c
 import { ArticlesTagsComponent } from './articles/articles-tags/articles-tags.component';
 import { ArticlesSeoComponent } from './articles/articles-seo/articles-seo.component';
 import { ArticlesDetailsComponent } from './articles/articles-details/articles-details.component';
+import { DepartmentListComponent } from './department/department-list/department-list.component';
+import { DepartmentMasterComponent } from './department/department-master/department-master.component';
+import { CategoryListComponent } from './category/category-list/category-list.component';
+import { CategoryMasterComponent } from './category/category-master/category-master.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { ArticlesDetailsComponent } from './articles/articles-details/articles-d
     ArticlesContentComponent,
     ArticlesTagsComponent,
     ArticlesSeoComponent,
-    ArticlesDetailsComponent
+    ArticlesDetailsComponent,
+    DepartmentListComponent,
+    DepartmentMasterComponent,
+    CategoryListComponent,
+    CategoryMasterComponent
   ],
   imports: [
     CommonModule,
