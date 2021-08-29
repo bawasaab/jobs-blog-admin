@@ -19,9 +19,9 @@ export class ConstantService {
 	// public apiBaseUrl: string = `${this.baseUrl}/api/v1`;
 	public apiBaseUrl: string = `${this.baseUrl}`;
 	// LIVE
-	// public appBaseUrl: string = `http://jobsarina.com/adminlte`;
+	public appBaseUrl: string = `https://api.jobsnplacements.com`;
 	// LOCAL
-	public appBaseUrl: string = `http://localhost:4200`;
+	// public appBaseUrl: string = `http://localhost:4200`;
 
 	public userImageLink: string;
 	public token!: string;
