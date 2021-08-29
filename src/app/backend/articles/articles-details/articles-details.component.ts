@@ -43,6 +43,7 @@ export class ArticlesDetailsComponent implements OnInit {
             title: ['', [Validators.required]],
             slug: ['', [Validators.required]],
             short_description: ['', [Validators.required]],
+            scheduled_for: ['', [Validators.required]], 
             status: ['', [Validators.required]],
         });
         this.setArticleId();
@@ -124,6 +125,7 @@ export class ArticlesDetailsComponent implements OnInit {
                 title: this.articleData?.title,
                 slug: this.articleData?.slug,
                 short_description: this.articleData?.short_description,
+                scheduled_for: new Date(this.articleData?.scheduled_for),
                 status: this.articleData?.status
 			});
 			// this.spinner.hide();

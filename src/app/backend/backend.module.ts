@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BackendRoutingModule } from './backend-routing.module';
@@ -19,6 +19,9 @@ import { DepartmentMasterComponent } from './department/department-master/depart
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { CategoryMasterComponent } from './category/category-master/category-master.component';
 
+import { TagInputModule } from 'ngx-chips';
+import { DateTimePickerModule } from 'ngx-datetime-picker';
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -36,11 +39,14 @@ import { CategoryMasterComponent } from './category/category-master/category-mas
     CategoryMasterComponent
   ],
   imports: [
+    TagInputModule,
     CommonModule,
     BackendRoutingModule,
     EditorModule,
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    DateTimePickerModule
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class BackendModule { }
