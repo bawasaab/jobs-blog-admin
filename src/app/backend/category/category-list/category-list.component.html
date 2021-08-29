@@ -27,7 +27,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                <a href="javascript:void(0);" routerLink="/departments/1/categories/master" class="btn btn-sm btn-success">Add New</a>
+                                <a href="javascript:void(0);" routerLink="/departments/{{deptId}}/categories/master" class="btn btn-sm btn-success">Add New</a>
                             </h3>
 
                             <div class="card-tools">
@@ -35,7 +35,7 @@
                                     <input type="text" #search name="table_search" class="form-control" placeholder="Search">
 
                                     <div class="input-group-append">
-                                        <button type="button" class="btn btn-default"><i class="fas fa-search"></i></button>
+                                        <button type="button" (click)="searchCategory(search.value)" class="btn btn-default"><i class="fas fa-search"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -46,49 +46,69 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Email</th>
-                                        <th>Name</th>
-                                        <th>phone</th>                                        
-                                        <th>Role</th>
+                                        <th>Title</th>
+                                        <th>Slug</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-                                    <tr>
-                                        <td>183</td>
-                                        <td>doe@yopmail.com</td>
-                                        <td>John Doe</td>
-                                        <td>Blogger</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
+                                <tbody *ngIf="catgs?.length; else no_data_templ">
+                                    <tr *ngFor="let category of catgs; let i = index">
+                                        <td>{{ category?._id }}</td>
+                                        <td>{{ category?.category_title }}</td>
+                                        <td>{{ category?.category_slug }}</td>
+    
+                                        <td *ngIf="category?.status == 'OPEN'; else statusBadge">
+                                            <span class="badge badge-success">
+                                                {{ category?.status }}
+                                            </span>
+                                        </td>
+                                        <ng-template #statusBadge>
+                                            <td><span class="badge badge-danger">{{ category?.status }}</span></td>
+                                        </ng-template>
+                                        
                                         <td colspan="2">
-                                            <a href="javascript:void(0);" routerLink="/departments/1/categories/master/userId" title="Edit User">
+                                            <a href="javascript:void(0);"
+                                                routerLink="/departments/{{deptId}}/categories/master/{{ category?._id }}" title="Edit Department">
                                                 <span class="badge bg-yellow">
-                                                  <i class="fa fa-fw fa-pen"></i>
+                                                    <i class="fa fa-pen"></i>
                                                 </span>
                                             </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Delete User">
-                                                <span class="badge bg-red" >
-                                                  <i class="fa fa-fw fa-trash"></i>
+    
+                                            &nbsp;<a href="javascript:void(0);" title="Delete Department">
+                                                <span class="badge bg-red" (click)="softDelete(category?._id)">
+                                                    <i class="fa fa-trash"></i>
                                                 </span>
                                             </a>
-
-                                            &nbsp;<a href="javascript:void(0);" title="Block User" >
-                                                <span class="badge bg-green" >
-                                                  <i class="fa fa-fw fa-ban" aria-hidden="true"></i>
+    
+                                            &nbsp;<a href="javascript:void(0);" title="Set Category Status To Close"
+                                                *ngIf="category?.status != 'CLOSE'; else unblock_user">
+                                                <span class="badge bg-red"
+                                                    (click)="confirmBlockUnblockCategory(category?._id, category?.title, 1)">
+                                                    <i class="fa fa-toggle-off" aria-hidden="true"></i>
                                                 </span>
                                             </a>
-
+    
                                             <ng-template #unblock_user>
-                                                &nbsp;<a href="javascript:void(0);" title="Unblock User">
-                                                  <span class="badge bg-red" >
-                                                    <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                                                  </span>
+                                                &nbsp;<a href="javascript:void(0);" title="Set Category Status To Open">
+                                                    <span class="badge bg-green"
+                                                        (click)="confirmBlockUnblockCategory(category?._id, category?.title, 0)">
+                                                        <i class="fa fa-toggle-on" aria-hidden="true"></i>
+                                                    </span>
                                                 </a>
                                             </ng-template>
+    
                                         </td>
                                     </tr>
+                                </tbody>
+    
+                                <ng-template #no_data_templ>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center" colspan="7">No record found!</td>
+                                        </tr>
+                                    </tbody>
+                                </ng-template>
 
                             </table>
                         </div>
