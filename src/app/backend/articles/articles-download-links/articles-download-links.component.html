@@ -1,0 +1,66 @@
+<form [formGroup]="articleExernalDownloadLinksForm" (ngSubmit)="onSubmit()">
+
+
+        <!-- <div class="col-sm-5 margin-top-10">
+
+            <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Category Title*" 
+                formControlName="category_title" 
+                [ngClass]="{ 'is-invalid': submitted && f.category_title.errors }" />
+
+            <div *ngIf="submitted && f.category_title.errors" class="invalid-feedback">
+                <div *ngIf="f.category_title.errors.required">
+                    title is required
+                </div>
+            </div>
+        </div> -->
+
+        <ng-container formArrayName="externalLinks">
+
+            <div class="form-group row" *ngFor="let control of externalLinks?.controls; index as i">
+
+    
+                <ng-container [formGroupName]="i">
+
+                    <div class="col-sm-2 margin-top-10">
+                        <button type="button" class="btn btn-danger btn-sm" (click)="deleteLink(i);">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
+
+                    <div class="col-sm-5 margin-top-10">
+                        <label for="inputTitle" class="col-sm-3 col-form-label">Link-{{ i+1 }}</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" formControlName="link" />
+                            <input class="form-control" type="hidden" formControlName="article_id" [value]="articleId" />
+                        </div>
+                    </div>
+            
+                    <div class="col-sm-5 margin-top-10">
+                        <label for="inputTitle" class="col-sm-2 col-form-label">Text-{{ i+1 }}</label>
+                        <input class="form-control" formControlName="text" />
+                    </div>
+                </ng-container>
+            </div>
+
+        </ng-container>
+
+    <div class="form-group row">
+
+        <div class="offset-sm-10 col-sm-2">
+            <button type="button" class="btn btn-info btn-sm" (click)="addNewLink();">Add New</button>
+        </div>
+    </div>
+
+    <hr/>
+    <div class="form-group row">
+        <div class="offset-sm-2 col-sm-10">
+            <button type="submit" class="btn btn-info">Submit</button>
+            &nbsp;
+            <a href="javascript:void(0);" routerLink="/articles"
+                class="btn btn-default float-right">Article Listing</a>
+        </div>
+    </div>
+</form>

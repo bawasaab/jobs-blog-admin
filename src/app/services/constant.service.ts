@@ -10,10 +10,10 @@ import { ResponseCode } from "../interfaces/response-code";
 export class ConstantService {
 
   // local
-	// public baseUrl: string = `http://localhost:3000`;
+    public baseUrl: string = `http://localhost:3000/api`;
 
 	// live
-	public baseUrl: string = `https://api.jobsnplacements.com`;
+	// public baseUrl: string = `https://api.jobsnplacements.com`;
 
 	// public baseUrl: string = `http://www.jobsarina.com/local`;
 	// public apiBaseUrl: string = `${this.baseUrl}/api/v1`;

@@ -4,6 +4,12 @@ enum STATUSES {
     'DELETED'
 }
 
+interface externalLinks {
+    article_id: string,
+    link: string,
+    text: string,
+};
+
 interface meta {
     article_id: string,
     name: string,
@@ -41,6 +47,8 @@ export interface Article {
     meta: [meta],
 	comments: [comments],
 	tags: [],
+
+    externalLinks: [externalLinks],
 
 	status: STATUSES,
 
