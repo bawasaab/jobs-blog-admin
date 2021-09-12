@@ -37,12 +37,7 @@ export class ArticlesDownloadLinksComponent implements OnInit {
     ngOnInit(): void {
 
         this.articleExernalDownloadLinksForm = this.formBuilder.group({
-            externalLinks: new FormArray([
-                new FormGroup({
-                    link: new FormControl(''),
-                    text: new FormControl('')
-                })
-            ])
+            externalLinks: new FormArray([])
         });
 
         this.externalLinks = this.articleExernalDownloadLinksForm.get('externalLinks') as FormArray;
@@ -54,6 +49,7 @@ export class ArticlesDownloadLinksComponent implements OnInit {
 
     addNewLink() {
         const group = new FormGroup({
+            article_id: new FormControl(),
             link: new FormControl('', Validators.required),
             text: new FormControl('', Validators.required),
         });
@@ -73,7 +69,6 @@ export class ArticlesDownloadLinksComponent implements OnInit {
                 if (this.isArticleIdProvidedFlag) {
                     this.getArticleById();
                 } else { }
-                // this.setFormData();
             });
         } catch (ex) {
             console.log('ex', ex);
@@ -94,7 +89,7 @@ export class ArticlesDownloadLinksComponent implements OnInit {
                 (result) => {
                     if (result.success) {
                         this.articleData = result.data.article;
-                        // this.setFormData();
+                        this.setFormData();
                     } else {
                         Swal.fire('User not found!', 'Status 404.', 'success');
                         this.constantService.handleResCode(result);
@@ -133,9 +128,22 @@ export class ArticlesDownloadLinksComponent implements OnInit {
 
         try {
 
-            // this.externalLinks.patchValue({
-            //     tags: tagsObj
-            // });
+            let data = this.articleData.externalLinks;
+
+            if( data.length > 0 ) {
+
+                for (let index = 0; index < data.length; index++) {
+                    const element = data[index];
+                    console.log('element', element);
+
+                    const group = new FormGroup({
+                        article_id: new FormControl(element.article_id),
+                        link: new FormControl(element.link, Validators.required),
+                        text: new FormControl(element.text, Validators.required),
+                    });
+                    this.externalLinks.push(group);
+                }
+            }
             // this.spinner.hide();
         } catch (ex) {
             console.log('ex', ex);
@@ -171,7 +179,7 @@ export class ArticlesDownloadLinksComponent implements OnInit {
 
                 if (result.success) {
                     // this.toastr.success(result.message, 'Success!');
-                    // this.router.navigate(['/articles']);
+                    this.router.navigate(['/articles']);
                 } else {
                     // this.toastr.error(result.errorArr[0], 'Request Error!');
                     this.constantService.handleResCode(result);
