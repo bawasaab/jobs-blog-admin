@@ -21,6 +21,7 @@ import { CategoryMasterComponent } from './category/category-master/category-mas
 
 import { TagInputModule } from 'ngx-chips';
 import { DateTimePickerModule } from 'ngx-datetime-picker';
+import { ArticlesDownloadLinksComponent } from './articles/articles-download-links/articles-download-links.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DateTimePickerModule } from 'ngx-datetime-picker';
     DepartmentListComponent,
     DepartmentMasterComponent,
     CategoryListComponent,
-    CategoryMasterComponent
+    CategoryMasterComponent,
+    ArticlesDownloadLinksComponent
   ],
   imports: [
     TagInputModule,

@@ -44,6 +44,10 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="#article-content" data-toggle="tab">Content</a>
                                     </li>
+                                    <!-- article-download-links -->
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#article-download-links" data-toggle="tab">External Download Links</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div><!-- /.card-header -->
@@ -82,7 +86,7 @@
 
 
 
-                                <!-- article article-tags ends -->
+                                <!-- article article-tags starts -->
                                 <div class="chart tab-pane" id="article-tags" style="position: relative; height: 300px;">
                                     <app-articles-tags></app-articles-tags>
                                 </div>
@@ -94,13 +98,22 @@
 
 
 
-                                <!-- article article-content ends -->
+                                <!-- article article-content starts -->
                                 <div class="chart tab-pane" id="article-content" style="position: relative; height: 600px;">
                                     
                                     <app-articles-content></app-articles-content>
 
                                 </div>
                                 <!-- article article-content ends -->
+
+
+                                <!-- article article-download-links starts -->
+                                <div class="chart tab-pane" id="article-download-links" style="position: relative; height: 600px;">
+                                    
+                                    <app-articles-download-links></app-articles-download-links>
+
+                                </div>
+                                <!-- article article-download-links ends -->
 
                             </div>
                         </div><!-- /.card-body -->
