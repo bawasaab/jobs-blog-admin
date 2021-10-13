@@ -44,6 +44,8 @@ export class ArticlesDetailsComponent implements OnInit {
             slug: ['', [Validators.required]],
             short_description: ['', [Validators.required]],
             scheduled_for: ['', [Validators.required]], 
+            opened_on: ['', [Validators.required]], 
+            closed_on: ['', [Validators.required]], 
             status: ['', [Validators.required]],
         });
         this.setArticleId();
@@ -125,7 +127,11 @@ export class ArticlesDetailsComponent implements OnInit {
                 title: this.articleData?.title,
                 slug: this.articleData?.slug,
                 short_description: this.articleData?.short_description,
-                scheduled_for: new Date(this.articleData?.scheduled_for),
+                
+                scheduled_for: this.articleData?.scheduled_for ? new Date(this.articleData?.scheduled_for) : new Date(),                
+                opened_on: this.articleData?.scheduled_for ? new Date(this.articleData?.scheduled_for) : new Date(),
+                closed_on: this.articleData?.scheduled_for ? new Date(this.articleData?.scheduled_for) : new Date(),
+                
                 status: this.articleData?.status
 			});
 			// this.spinner.hide();

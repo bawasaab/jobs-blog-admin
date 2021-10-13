@@ -43,6 +43,8 @@ export interface Article {
     short_description: string,
     description: string,
     scheduled_for: Date,
+    opened_on: Date,
+    closed_on: Date,
 
     meta: [meta],
 	comments: [comments],
