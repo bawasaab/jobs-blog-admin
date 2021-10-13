@@ -87,7 +87,7 @@ export class CategoryMasterComponent implements OnInit {
 					this.getCatgById();
 				}
 			});
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -129,7 +129,7 @@ export class CategoryMasterComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -197,7 +197,7 @@ export class CategoryMasterComponent implements OnInit {
 				}
 			);
 
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -219,7 +219,7 @@ export class CategoryMasterComponent implements OnInit {
 				category_status: this.catgData.category_status
 			});
 			// this.spinner.hide();
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -244,7 +244,7 @@ export class CategoryMasterComponent implements OnInit {
 			} else {
 				this.insertCategory(in_data);
 			}
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -290,7 +290,7 @@ export class CategoryMasterComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -340,7 +340,7 @@ export class CategoryMasterComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);

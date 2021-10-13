@@ -89,7 +89,7 @@ export class UsersMasterComponent implements OnInit {
 				}
                 this.setFormData();
 			});
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -133,7 +133,7 @@ export class UsersMasterComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -164,7 +164,7 @@ export class UsersMasterComponent implements OnInit {
 			this.imageUrl = this.userImageLink + profilePic;
 			console.log('this.imageUrl', this.imageUrl);
 			// this.spinner.hide();
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -191,7 +191,7 @@ export class UsersMasterComponent implements OnInit {
 			} else {
 				this.insertUser(in_data);
 			}
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -235,7 +235,7 @@ export class UsersMasterComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -289,7 +289,7 @@ export class UsersMasterComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -318,7 +318,7 @@ export class UsersMasterComponent implements OnInit {
 			if (this.isUserIdProvidedFlag) {
 				this.modifyUserProfilePic();
 			}
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -340,7 +340,7 @@ export class UsersMasterComponent implements OnInit {
 				this.isImageInvalid = false;
 				// this.enableSubmitButton = true;
 			}
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -399,7 +399,7 @@ export class UsersMasterComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -427,7 +427,7 @@ export class UsersMasterComponent implements OnInit {
 					this.deleteUserImage(in_imageUrl);
 				}
 			});
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -472,7 +472,7 @@ export class UsersMasterComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);

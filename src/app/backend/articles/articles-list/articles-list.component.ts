@@ -75,7 +75,7 @@ export class ArticlesListComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -103,7 +103,7 @@ export class ArticlesListComponent implements OnInit {
 					this.deleteArticleByArticleId(articleId);
 				}
 			});
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -145,7 +145,7 @@ export class ArticlesListComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -175,7 +175,7 @@ export class ArticlesListComponent implements OnInit {
 					this.blockUnblockArticle(articleId, status);
 				}
 			});
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -223,7 +223,7 @@ export class ArticlesListComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -242,7 +242,7 @@ export class ArticlesListComponent implements OnInit {
 			this.txtSearch = txtSearch;
 			console.log('txtSearch', txtSearch);
 			this.getAllArticles(txtSearch);
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,

@@ -64,7 +64,7 @@ export class CategoryListComponent implements OnInit {
 					this.constantService.handleResCode(obj);
 				}
 			});
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -104,7 +104,7 @@ export class CategoryListComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -132,7 +132,7 @@ export class CategoryListComponent implements OnInit {
 					this.deleteCategoryBycatgId(catgId);
 				}
 			});
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -174,7 +174,7 @@ export class CategoryListComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -205,7 +205,7 @@ export class CategoryListComponent implements OnInit {
 					this.blockUnblockCategory(catgId, title, status);
 				}
 			});
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -253,7 +253,7 @@ export class CategoryListComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -272,7 +272,7 @@ export class CategoryListComponent implements OnInit {
 			this.txtSearch = txtSearch;
 			console.log('txtSearch', txtSearch);
 			this.getAllCategories(txtSearch);
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,

@@ -90,7 +90,7 @@ export class DepartmentMasterComponent implements OnInit {
 					});
 				}
 			});
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -134,7 +134,7 @@ export class DepartmentMasterComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -201,7 +201,7 @@ export class DepartmentMasterComponent implements OnInit {
 				}
 			);
 
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -223,7 +223,7 @@ export class DepartmentMasterComponent implements OnInit {
 				department_status: this.deptData.department_status
 			});
 			// this.spinner.hide();
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -248,7 +248,7 @@ export class DepartmentMasterComponent implements OnInit {
 			} else {
 				this.insertDepartment(in_data);
 			}
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -294,7 +294,7 @@ export class DepartmentMasterComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -344,7 +344,7 @@ export class DepartmentMasterComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -373,7 +373,7 @@ export class DepartmentMasterComponent implements OnInit {
 			if (this.isDeptIdProvidedFlag) {
 				this.modifyDepartmentProfilePic();
 			}
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -394,7 +394,7 @@ export class DepartmentMasterComponent implements OnInit {
 				this.isImageInvalid = false;
 				// this.enableSubmitButton = true;
 			}
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -454,7 +454,7 @@ export class DepartmentMasterComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -482,7 +482,7 @@ export class DepartmentMasterComponent implements OnInit {
 					this.deleteDeptImage(in_imageUrl);
 				}
 			});
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -527,7 +527,7 @@ export class DepartmentMasterComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);

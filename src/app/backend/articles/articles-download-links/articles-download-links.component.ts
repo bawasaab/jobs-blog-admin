@@ -70,7 +70,7 @@ export class ArticlesDownloadLinksComponent implements OnInit {
                     this.getArticleById();
                 } else { }
             });
-        } catch (ex) {
+        } catch (ex :any) {
             console.log('ex', ex);
             let obj = {
                 resCode: 400,
@@ -112,7 +112,7 @@ export class ArticlesDownloadLinksComponent implements OnInit {
                     this.ngxSpinnerService.hide();
                 }
             );
-        } catch (ex) {
+        } catch (ex :any) {
 
             this.ngxSpinnerService.hide();
             console.log('ex', ex);
@@ -145,7 +145,7 @@ export class ArticlesDownloadLinksComponent implements OnInit {
                 }
             }
             // this.spinner.hide();
-        } catch (ex) {
+        } catch (ex :any) {
             console.log('ex', ex);
             let obj = {
                 resCode: 400,

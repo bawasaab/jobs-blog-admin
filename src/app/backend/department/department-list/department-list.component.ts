@@ -76,7 +76,7 @@ export class DepartmentListComponent implements OnInit {
                     this.ngxSpinnerService.hide();
                 }
             );
-        } catch (ex) {
+        } catch (ex :any) {
 
             this.ngxSpinnerService.hide();
             console.log('ex', ex);
@@ -104,7 +104,7 @@ export class DepartmentListComponent implements OnInit {
                     this.deleteDepartmentByDeptId(deptId);
                 }
             });
-        } catch (ex) {
+        } catch (ex :any) {
             console.log('ex', ex);
             let obj = {
                 resCode: 400,
@@ -146,7 +146,7 @@ export class DepartmentListComponent implements OnInit {
                     this.ngxSpinnerService.hide();
                 }
             );
-        } catch (ex) {
+        } catch (ex :any) {
 
             this.ngxSpinnerService.hide();
             console.log('ex', ex);
@@ -177,7 +177,7 @@ export class DepartmentListComponent implements OnInit {
                     this.blockUnblockDepartment(deptId, title, status);
                 }
             });
-        } catch (ex) {
+        } catch (ex :any) {
             console.log('ex', ex);
             let obj = {
                 resCode: 400,
@@ -226,7 +226,7 @@ export class DepartmentListComponent implements OnInit {
                     this.ngxSpinnerService.hide();
                 }
             );
-        } catch (ex) {
+        } catch (ex :any) {
 
             this.ngxSpinnerService.hide();
             console.log('ex', ex);
@@ -245,7 +245,7 @@ export class DepartmentListComponent implements OnInit {
             this.txtSearch = txtSearch;
             console.log('txtSearch', txtSearch);
             this.getAllDepartments(txtSearch);
-        } catch (ex) {
+        } catch (ex :any) {
             console.log('ex', ex);
             let obj = {
                 resCode: 400,

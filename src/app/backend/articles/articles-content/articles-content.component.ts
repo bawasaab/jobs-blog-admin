@@ -160,7 +160,7 @@ export class ArticlesContentComponent implements OnInit {
 				} else {}
                 // this.setFormData();
 			});
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -202,7 +202,7 @@ export class ArticlesContentComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
@@ -222,7 +222,7 @@ export class ArticlesContentComponent implements OnInit {
                 description: this.articleData?.description
 			});
 			// this.spinner.hide();
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,

@@ -57,7 +57,7 @@ export class ArticlesSeoComponent implements OnInit {
 				} else {}
                 // this.setFormData();
 			});
-		} catch (ex) {
+		} catch (ex :any) {
 			console.log('ex', ex);
 			let obj = {
 				resCode: 400,
@@ -99,7 +99,7 @@ export class ArticlesSeoComponent implements OnInit {
 					this.ngxSpinnerService.hide();
 				}
 			);
-		} catch (ex) {
+		} catch (ex :any) {
 
 			this.ngxSpinnerService.hide();
 			console.log('ex', ex);
